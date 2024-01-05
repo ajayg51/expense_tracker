@@ -10,7 +10,14 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("Login Screen")),
+      body: Center(
+        child: Obx(() {
+          if (controller.isUserLoggedIn.value) {
+            return Text("Welcome");
+          }
+          return SizedBox.shrink();
+        }),
+      ),
     );
   }
 }
