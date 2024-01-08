@@ -1,5 +1,3 @@
-
-
 import 'package:expense_tracker/transaction_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -13,9 +11,11 @@ class LoginScreenController extends GetxController {
   void onInit() {
     super.onInit();
     if (FirebaseAuth.instance.currentUser != null) {
+      print("1");
       isUserLoggedIn.toggle();
       navigateToHomeScreen();
     } else {
+      print("2");
       googleSignIn();
     }
   }
@@ -27,12 +27,20 @@ class LoginScreenController extends GetxController {
   }
 
   void googleSignIn() async {
-    final googleUser = await GoogleSignIn().signIn();
-    final googleAuth = await googleUser?.authentication;
-    final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
-    userCredential =
-        await FirebaseAuth.instance.signInWithCredential(credential);
-    print(userCredential);
+    try {
+      final googleUser = await GoogleSignIn().signIn();
+      final googleAuth = await googleUser?.authentication;
+      final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken, idToken: googleAuth?.idToken);
+      userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      if (userCredential != null) {
+        navigateToHomeScreen();
+      }
+      print("Here");
+      print(userCredential);
+    } catch (e) {
+      print("error $e");
+    }
   }
 }

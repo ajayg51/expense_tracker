@@ -1,9 +1,14 @@
 import 'package:expense_tracker/login_screen/login_screen.dart';
 import 'package:expense_tracker/transaction_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await FirebaseAuth.instance.useAuthEmulator("localhost",9099);
   runApp(const MyApp());
 }
 
