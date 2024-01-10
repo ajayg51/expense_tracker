@@ -1,5 +1,3 @@
-
-
 import 'package:expense_tracker/data/transaction_data_model.dart';
 import 'package:expense_tracker/enums/transaction_tab_enum.dart';
 import 'package:expense_tracker/new_transaction_screen.dart';
@@ -9,6 +7,7 @@ import 'package:expense_tracker/utils/constants.dart';
 import 'package:expense_tracker/utils/extensions.dart';
 import 'package:expense_tracker/utils/separator.dart';
 import 'package:expense_tracker/utils/tab_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -21,6 +20,9 @@ class TransactionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content:
+            Text(FirebaseAuth.instance.currentUser?.email ?? "None")));
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

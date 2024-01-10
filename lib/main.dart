@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await FirebaseAuth.instance.useAuthEmulator("localhost",9099);
+  await FirebaseAuth.instance.useAuthEmulator("localhost", 9099);
   runApp(const MyApp());
 }
 
