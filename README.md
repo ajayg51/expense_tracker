@@ -1,4 +1,4 @@
-# expenseTracker | An android/iOS app to manage self expense and get to know whom to pay and to receive from (currently in basic phase)
+# expenseTracker | An android/iOS app to manage self expenses and get to know whom to pay and to receive from (currently in basic phase)
 
 
 # Tech stack
