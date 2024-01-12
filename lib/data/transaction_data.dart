@@ -9,13 +9,13 @@ import 'package:expense_tracker/utils/assets.dart';
 //  toBePaid => type income (senderId != receiverId)
 
 class TransactionData {
-  static List<Map<String,dynamic>> allTransactionList = <Map<String, dynamic>>[
+  static List<Map<String, dynamic>> allTransactionList = <Map<String, dynamic>>[
     {
       "id": 1,
       "name": "Alice",
       "mob": "+91120",
       "availAmt": 12345,
-      "imagePath": Assets.dummyUserImg,
+      "imagePath": Assets.dummyUserIcon,
       "transactionList": <Map<String, dynamic>>[
         {
           "type": "income",
@@ -59,7 +59,7 @@ class TransactionData {
       "name": "Bob",
       "mob": "+911234567890",
       "availAmt": 1345,
-      "imagePath": Assets.dummyUserImg,
+      "imagePath": Assets.dummyUserIcon,
       "transactionList": <Map<String, dynamic>>[
         {
           "type": "expense",
@@ -82,7 +82,7 @@ class TransactionData {
       "name": "Charles",
       "mob": "+911234567890",
       "availAmt": 2345,
-      "imagePath": Assets.dummyUserImg,
+      "imagePath": Assets.dummyUserIcon,
       "transactionList": <Map<String, dynamic>>[
         {
           "type": "income",
@@ -98,7 +98,7 @@ class TransactionData {
       "name": "Dobby",
       "mob": "+911234567890",
       "availAmt": 1245,
-      "imagePath": Assets.dummyUserImg,
+      "imagePath": Assets.dummyUserIcon,
       "transactionList": <Map<String, dynamic>>[
         {
           "type": "income",
@@ -114,7 +114,7 @@ class TransactionData {
       "name": "Eliza",
       "mob": "+911234567890",
       "availAmt": 1235,
-      "imagePath": Assets.dummyUserImg,
+      "imagePath": Assets.dummyUserIcon,
       "transactionList": <Map<String, dynamic>>[
         {
           "type": "income",
@@ -130,7 +130,7 @@ class TransactionData {
       "name": "Felish",
       "mob": "+911234567890",
       "availAmt": 345,
-      "imagePath": Assets.dummyUserImg,
+      "imagePath": Assets.dummyUserIcon,
       "transactionList": <Map<String, dynamic>>[
         {
           "type": "income",
@@ -146,7 +146,7 @@ class TransactionData {
       "name": "Goblin",
       "mob": "+911234567890",
       "availAmt": 1245,
-      "imagePath": Assets.dummyUserImg,
+      "imagePath": Assets.dummyUserIcon,
       "transactionList": <Map<String, dynamic>>[
         {
           "type": "income",
@@ -162,7 +162,7 @@ class TransactionData {
       "name": "Hellen",
       "mob": "+911234567890",
       "availAmt": 12357,
-      "imagePath": Assets.dummyUserImg,
+      "imagePath": Assets.dummyUserIcon,
       "transactionList": <Map<String, dynamic>>[
         {
           "type": "income",
@@ -178,7 +178,7 @@ class TransactionData {
       "name": "Iraa",
       "mob": "+911234567890",
       "availAmt": 345543,
-      "imagePath": Assets.dummyUserImg,
+      "imagePath": Assets.dummyUserIcon,
       "transactionList": <Map<String, dynamic>>[
         {
           "type": "income",
@@ -194,7 +194,7 @@ class TransactionData {
       "name": "Jack",
       "mob": "+911234567890",
       "availAmt": 124523,
-      "imagePath": Assets.dummyUserImg,
+      "imagePath": Assets.dummyUserIcon,
       "transactionList": <Map<String, dynamic>>[
         {
           "type": "income",

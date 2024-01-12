@@ -12,10 +12,10 @@ class LoginScreenController extends GetxController {
     // TODO: implement onReady
     super.onReady();
     if (FirebaseAuth.instance.currentUser != null) {
-      Get.to(TransactionScreen());
+      Get.off(TransactionScreen());
     } else {
       await googleSignIn();
-      Get.to(TransactionScreen());
+      Get.off(TransactionScreen());
     }
   }
 

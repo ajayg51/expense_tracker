@@ -3,6 +3,7 @@ import 'package:expense_tracker/enums/transaction_tab_enum.dart';
 import 'package:expense_tracker/new_transaction_screen.dart';
 import 'package:expense_tracker/transaction_controller.dart';
 import 'package:expense_tracker/transaction_views/all_transaction_view.dart';
+import 'package:expense_tracker/utils/common_background_gradient.dart';
 import 'package:expense_tracker/utils/constants.dart';
 import 'package:expense_tracker/utils/extensions.dart';
 import 'package:expense_tracker/utils/separator.dart';
@@ -20,9 +21,7 @@ class TransactionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content:
-            Text(FirebaseAuth.instance.currentUser?.email ?? "None")));
+    FirebaseAuth.instance.currentUser?.reload();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -33,19 +32,7 @@ class TransactionScreen extends StatelessWidget {
             fontSize: 24,
           ),
         ),
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.teal,
-                Colors.amber,
-                Color.fromARGB(255, 70, 67, 67),
-              ],
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-            ),
-          ),
-        ),
+        flexibleSpace: const CommonBackgroundGradient(),
         actions: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -78,21 +65,12 @@ class TransactionScreen extends StatelessWidget {
           5.horizontalSpace,
         ],
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.teal,
-              Colors.amber,
-              Color.fromARGB(255, 70, 67, 67),
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-          ),
-        ),
+      body: CommonBackgroundGradient(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text("userInfo : " + FirebaseAuth.instance.currentUser.toString()),
+            20.verticalSpace,
             Text(
               '${controller.getGreetMsg}! ${controller.currentUserData.name}',
               style: const TextStyle(

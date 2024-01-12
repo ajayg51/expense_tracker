@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:expense_tracker/transaction_controller.dart';
 import 'package:expense_tracker/transaction_screen.dart';
 import 'package:expense_tracker/utils/assets.dart';
+import 'package:expense_tracker/utils/common_background_gradient.dart';
 import 'package:expense_tracker/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,72 +33,52 @@ class NewTransactionScreen extends StatelessWidget {
             fontSize: 24,
           ),
         ),
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Colors.teal,
-                Colors.amber,
-                Color.fromARGB(255, 70, 67, 67),
-              ],
-              begin: Alignment.bottomLeft,
-              end: Alignment.topRight,
-            ),
-          ),
-        ),
+        flexibleSpace: const CommonBackgroundGradient(),
       ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.teal,
-              Colors.amber,
-              Color.fromARGB(255, 70, 67, 67),
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topRight,
-          ),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              10.verticalSpace,
-              buildSelfOthersExpenseSwitch.withPaddingSymmetric(horizontal: 5),
-              5.verticalSpace,
-              buildIncomeExpenseSwitch.withPaddingSymmetric(horizontal: 5),
-              Obx(() {
-                if (controller.selfOthersTransactionSwitch.value) {
-                  return Column(
-                    children: [
-                      5.verticalSpace,
-                      buildPartialFullPaymentSwitch.withPaddingSymmetric(
-                          horizontal: 5),
-                      10.verticalSpace,
-                      buildPickCustomerImageFromGallery.withPaddingSymmetric(
-                          horizontal: 5),
-                      10.verticalSpace,
-                      buildNameInputField.withPaddingSymmetric(horizontal: 5),
-                      10.verticalSpace,
-                      buildMobileInputField.withPaddingSymmetric(horizontal: 5),
-                    ],
-                  );
-                }
-                return const SizedBox.shrink();
-              }),
-              10.verticalSpace,
-              buildTransactionAmtInputField.withPaddingSymmetric(horizontal: 5),
-              40.verticalSpace,
-              Row(
+      body: CommonBackgroundGradient(
+        child: buildChild(context: context),
+      ),
+    );
+  }
+
+  Widget buildChild({required BuildContext context}) {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          10.verticalSpace,
+          buildSelfOthersExpenseSwitch.withPaddingSymmetric(horizontal: 5),
+          5.verticalSpace,
+          buildIncomeExpenseSwitch.withPaddingSymmetric(horizontal: 5),
+          Obx(() {
+            if (controller.selfOthersTransactionSwitch.value) {
+              return Column(
                 children: [
-                  Expanded(
-                    child: buildAddNewTransactionBtn(context: context),
-                  )
+                  5.verticalSpace,
+                  buildPartialFullPaymentSwitch.withPaddingSymmetric(
+                      horizontal: 5),
+                  10.verticalSpace,
+                  buildPickCustomerImageFromGallery.withPaddingSymmetric(
+                      horizontal: 5),
+                  10.verticalSpace,
+                  buildNameInputField.withPaddingSymmetric(horizontal: 5),
+                  10.verticalSpace,
+                  buildMobileInputField.withPaddingSymmetric(horizontal: 5),
                 ],
-              ).withPaddingSymmetric(horizontal: 5),
+              );
+            }
+            return const SizedBox.shrink();
+          }),
+          10.verticalSpace,
+          buildTransactionAmtInputField.withPaddingSymmetric(horizontal: 5),
+          40.verticalSpace,
+          Row(
+            children: [
+              Expanded(
+                child: buildAddNewTransactionBtn(context: context),
+              )
             ],
-          ),
-        ),
+          ).withPaddingSymmetric(horizontal: 5),
+        ],
       ),
     );
   }
@@ -112,7 +93,7 @@ class NewTransactionScreen extends StatelessWidget {
             Obx(() {
               if (controller.imagePath.isEmpty) {
                 return SvgPicture.asset(
-                  Assets.avatarImg,
+                  Assets.avatarIcon,
                   height: 200,
                 );
               }
