@@ -1,4 +1,4 @@
-import 'package:expense_tracker/splash_and_login_screens/login_screen_controller.dart';
+import 'package:expense_tracker/screens/login_screen_controller.dart';
 import 'package:expense_tracker/utils/common_background_gradient.dart';
 import 'package:expense_tracker/utils/extensions.dart';
 import 'package:firebase_auth/firebase_auth.dart';

@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_workers/utils/debouncer.dart';
 import 'package:image_picker/image_picker.dart';
 
-class TransactionController extends GetxController {
+class HomeScreenController extends GetxController {
   final data = TransactionData.allTransactionList;
   final currentUserId = 1;
   final currentUserAllTransactionSet = <TransactionDataModel>{}.obs;

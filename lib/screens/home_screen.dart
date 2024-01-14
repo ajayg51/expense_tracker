@@ -1,7 +1,8 @@
 import 'package:expense_tracker/data/transaction_data_model.dart';
 import 'package:expense_tracker/enums/transaction_tab_enum.dart';
-import 'package:expense_tracker/new_transaction_screen.dart';
-import 'package:expense_tracker/transaction_controller.dart';
+import 'package:expense_tracker/screens/home_screen_controller.dart';
+import 'package:expense_tracker/screens/new_transaction_screen.dart';
+
 import 'package:expense_tracker/transaction_views/all_transaction_view.dart';
 import 'package:expense_tracker/utils/common_background_gradient.dart';
 import 'package:expense_tracker/utils/constants.dart';
@@ -13,15 +14,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
-class TransactionScreen extends StatelessWidget {
-  TransactionScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
   final controller =
-      Get.put(TransactionController(), tag: "transactionController");
+      Get.put(HomeScreenController(), tag: "transactionController");
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth.instance.currentUser?.reload();
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -49,7 +49,7 @@ class TransactionScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (ctx) => NewTransactionScreen(),
+                    builder: (ctx) => const NewTransactionScreen(),
                   ),
                 );
               },

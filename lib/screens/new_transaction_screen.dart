@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:expense_tracker/transaction_controller.dart';
-import 'package:expense_tracker/transaction_screen.dart';
+import 'package:expense_tracker/screens/home_screen.dart';
+import 'package:expense_tracker/screens/home_screen_controller.dart';
 import 'package:expense_tracker/utils/assets.dart';
 import 'package:expense_tracker/utils/common_background_gradient.dart';
 import 'package:expense_tracker/utils/extensions.dart';
@@ -10,20 +10,30 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class NewTransactionScreen extends StatelessWidget {
-  NewTransactionScreen({super.key});
+class NewTransactionScreen extends StatefulWidget {
+  const NewTransactionScreen({super.key});
 
-  late final TransactionController controller;
+  @override
+  State<NewTransactionScreen> createState() => _NewTransactionScreenState();
+}
+
+class _NewTransactionScreenState extends State<NewTransactionScreen> {
+  
+  late final HomeScreenController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    if (Get.isRegistered<HomeScreenController>(tag: "transactionController")) {
+      controller = Get.find<HomeScreenController>(tag: "transactionController");
+    } else {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (ctx) => HomeScreen()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (Get.isRegistered<TransactionController>(tag: "transactionController")) {
-      controller =
-          Get.find<TransactionController>(tag: "transactionController");
-    } else {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (ctx) => TransactionScreen()));
-    }
     return Scaffold(
       appBar: AppBar(
         title: const Text(
