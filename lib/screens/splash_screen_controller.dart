@@ -8,14 +8,18 @@ class SplashScreenController extends GetxController {
   void onReady() {
     super.onReady();
 
-    if (FirebaseAuth.instance.currentUser == null) {
-      Future.delayed(const Duration(seconds: 1), () {
-        Get.off(LoginScreen());
-      });
-    } else {
-      Future.delayed(const Duration(seconds: 1), () {
-        Get.off(HomeScreen());
-      });
-    }
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.off(LoginScreen());
+    });
+
+    // if (FirebaseAuth.instance.currentUser == null) {
+    //   Future.delayed(const Duration(seconds: 1), () {
+    //     Get.off(LoginScreen());
+    //   });
+    // } else {
+    //   Future.delayed(const Duration(seconds: 1), () {
+    //     Get.off(HomeScreen(msg: "",));
+    //   });
+    // }
   }
 }

@@ -15,8 +15,12 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+  HomeScreen({
+    super.key,
+    required this.msg,
+  });
 
+  final RxString msg;
   final controller =
       Get.put(HomeScreenController(), tag: "transactionController");
 
@@ -46,12 +50,12 @@ class HomeScreen extends StatelessWidget {
               hoverColor: Colors.transparent,
               splashColor: Colors.transparent,
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (ctx) => const NewTransactionScreen(),
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   // MaterialPageRoute(
+                //   //   builder: (ctx) => const NewTransactionScreen(),
+                //   // ),
+                // );
               },
               child: const Text(
                 "New transaction",
@@ -65,41 +69,44 @@ class HomeScreen extends StatelessWidget {
           5.horizontalSpace,
         ],
       ),
-      body: CommonBackgroundGradient(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("userInfo : " + FirebaseAuth.instance.currentUser.toString()),
-            20.verticalSpace,
-            Text(
-              '${controller.getGreetMsg}! ${controller.currentUserData.name}',
-              style: const TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 22,
-              ),
-            ).withPaddingSymmetric(horizontal: 5),
-            const Separator().withPaddingSymmetric(horizontal: 5),
-            5.verticalSpace,
-            buildAmtInfoGridView.withPaddingSymmetric(horizontal: 5),
-            5.verticalSpace,
-            const Text(
-              "Transactions",
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 20,
-              ),
-            ).withPaddingSymmetric(horizontal: 5),
-            const Separator().withPaddingSymmetric(horizontal: 5),
-            10.verticalSpace,
-            buildTransactionTabs.withPaddingSymmetric(horizontal: 5),
-            5.verticalSpace,
-            Expanded(
-              flex: 4,
-              child: buildTabBasisView.withPaddingSymmetric(horizontal: 5),
-            ),
-          ],
-        ),
-      ),
+      body: Obx(() {
+        return Text("userInfo : " + msg.value);
+      }),
+      // body: CommonBackgroundGradient(
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     children: [
+
+      //       20.verticalSpace,
+      //       Text(
+      //         '${controller.getGreetMsg}! ${controller.currentUserData.name}',
+      //         style: const TextStyle(
+      //           fontWeight: FontWeight.w700,
+      //           fontSize: 22,
+      //         ),
+      //       ).withPaddingSymmetric(horizontal: 5),
+      //       const Separator().withPaddingSymmetric(horizontal: 5),
+      //       5.verticalSpace,
+      //       buildAmtInfoGridView.withPaddingSymmetric(horizontal: 5),
+      //       5.verticalSpace,
+      //       const Text(
+      //         "Transactions",
+      //         style: TextStyle(
+      //           fontWeight: FontWeight.w700,
+      //           fontSize: 20,
+      //         ),
+      //       ).withPaddingSymmetric(horizontal: 5),
+      //       const Separator().withPaddingSymmetric(horizontal: 5),
+      //       10.verticalSpace,
+      //       buildTransactionTabs.withPaddingSymmetric(horizontal: 5),
+      //       5.verticalSpace,
+      //       Expanded(
+      //         flex: 4,
+      //         child: buildTabBasisView.withPaddingSymmetric(horizontal: 5),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 

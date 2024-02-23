@@ -12,18 +12,21 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loginScreenStr =
-        FirebaseAuth.instance.currentUser != null ? "Welcome" : "Logging In";
-    return Scaffold(
-      body: CommonBackgroundGradient(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(loginScreenStr),
-              10.verticalSpace,
-              const CircularProgressIndicator(),
-            ],
+    return SafeArea(
+      child: Scaffold(
+        body: CommonBackgroundGradient(
+          child: Center(
+            child: Obx(() {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("User : " + controller.error.value),
+                  10.verticalSpace,
+                  if(controller.isLoading.value)
+                    const CircularProgressIndicator(),
+                ],
+              );
+            }),
           ),
         ),
       ),
